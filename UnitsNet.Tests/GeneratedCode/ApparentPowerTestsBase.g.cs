@@ -6,17 +6,17 @@
 //     The build server regenerates the code before each build and a pre-build
 //     step will regenerate the code on each local build.
 //
-//     See https://github.com/anjdreas/UnitsNet/wiki/Adding-a-New-Unit for how to add or edit units.
+//     See https://github.com/angularsen/UnitsNet/wiki/Adding-a-New-Unit for how to add or edit units.
 //
-//     Add CustomCode\UnitClasses\MyUnit.extra.cs files to add code to generated unit classes.
-//     Add Extensions\MyUnitExtensions.cs to decorate unit classes with new behavior.
-//     Add UnitDefinitions\MyUnit.json and run GeneratUnits.bat to generate new units or unit classes.
+//     Add CustomCode\Quantities\MyQuantity.extra.cs files to add code to generated quantities.
+//     Add Extensions\MyQuantityExtensions.cs to decorate quantities with new behavior.
+//     Add UnitDefinitions\MyQuantity.json and run GeneratUnits.bat to generate new units or quantities.
 //
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Copyright (c) 2007 Andreas Gullberg Larsen (anjdreas@gmail.com).
-// https://github.com/anjdreas/UnitsNet
+// Copyright (c) 2013 Andreas Gullberg Larsen (andreas.larsen84@gmail.com).
+// https://github.com/angularsen/UnitsNet
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -52,11 +52,13 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class ApparentPowerTestsBase
     {
+        protected abstract double GigavoltamperesInOneVoltampere { get; }
         protected abstract double KilovoltamperesInOneVoltampere { get; }
         protected abstract double MegavoltamperesInOneVoltampere { get; }
         protected abstract double VoltamperesInOneVoltampere { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
+        protected virtual double GigavoltamperesTolerance { get { return 1e-5; } }
         protected virtual double KilovoltamperesTolerance { get { return 1e-5; } }
         protected virtual double MegavoltamperesTolerance { get { return 1e-5; } }
         protected virtual double VoltamperesTolerance { get { return 1e-5; } }
@@ -66,6 +68,7 @@ namespace UnitsNet.Tests
         public void VoltampereToApparentPowerUnits()
         {
             ApparentPower voltampere = ApparentPower.FromVoltamperes(1);
+            AssertEx.EqualTolerance(GigavoltamperesInOneVoltampere, voltampere.Gigavoltamperes, GigavoltamperesTolerance);
             AssertEx.EqualTolerance(KilovoltamperesInOneVoltampere, voltampere.Kilovoltamperes, KilovoltamperesTolerance);
             AssertEx.EqualTolerance(MegavoltamperesInOneVoltampere, voltampere.Megavoltamperes, MegavoltamperesTolerance);
             AssertEx.EqualTolerance(VoltamperesInOneVoltampere, voltampere.Voltamperes, VoltamperesTolerance);
@@ -74,6 +77,7 @@ namespace UnitsNet.Tests
         [Fact]
         public void FromValueAndUnit()
         {
+            AssertEx.EqualTolerance(1, ApparentPower.From(1, ApparentPowerUnit.Gigavoltampere).Gigavoltamperes, GigavoltamperesTolerance);
             AssertEx.EqualTolerance(1, ApparentPower.From(1, ApparentPowerUnit.Kilovoltampere).Kilovoltamperes, KilovoltamperesTolerance);
             AssertEx.EqualTolerance(1, ApparentPower.From(1, ApparentPowerUnit.Megavoltampere).Megavoltamperes, MegavoltamperesTolerance);
             AssertEx.EqualTolerance(1, ApparentPower.From(1, ApparentPowerUnit.Voltampere).Voltamperes, VoltamperesTolerance);
@@ -83,6 +87,7 @@ namespace UnitsNet.Tests
         public void As()
         {
             var voltampere = ApparentPower.FromVoltamperes(1);
+            AssertEx.EqualTolerance(GigavoltamperesInOneVoltampere, voltampere.As(ApparentPowerUnit.Gigavoltampere), GigavoltamperesTolerance);
             AssertEx.EqualTolerance(KilovoltamperesInOneVoltampere, voltampere.As(ApparentPowerUnit.Kilovoltampere), KilovoltamperesTolerance);
             AssertEx.EqualTolerance(MegavoltamperesInOneVoltampere, voltampere.As(ApparentPowerUnit.Megavoltampere), MegavoltamperesTolerance);
             AssertEx.EqualTolerance(VoltamperesInOneVoltampere, voltampere.As(ApparentPowerUnit.Voltampere), VoltamperesTolerance);
@@ -92,6 +97,7 @@ namespace UnitsNet.Tests
         public void ConversionRoundTrip()
         {
             ApparentPower voltampere = ApparentPower.FromVoltamperes(1);
+            AssertEx.EqualTolerance(1, ApparentPower.FromGigavoltamperes(voltampere.Gigavoltamperes).Voltamperes, GigavoltamperesTolerance);
             AssertEx.EqualTolerance(1, ApparentPower.FromKilovoltamperes(voltampere.Kilovoltamperes).Voltamperes, KilovoltamperesTolerance);
             AssertEx.EqualTolerance(1, ApparentPower.FromMegavoltamperes(voltampere.Megavoltamperes).Voltamperes, MegavoltamperesTolerance);
             AssertEx.EqualTolerance(1, ApparentPower.FromVoltamperes(voltampere.Voltamperes).Voltamperes, VoltamperesTolerance);
@@ -170,8 +176,8 @@ namespace UnitsNet.Tests
         public void EqualsIsImplemented()
         {
             ApparentPower v = ApparentPower.FromVoltamperes(1);
-            Assert.True(v.Equals(ApparentPower.FromVoltamperes(1)));
-            Assert.False(v.Equals(ApparentPower.Zero));
+            Assert.True(v.Equals(ApparentPower.FromVoltamperes(1), ApparentPower.FromVoltamperes(VoltamperesTolerance)));
+            Assert.False(v.Equals(ApparentPower.Zero, ApparentPower.FromVoltamperes(VoltamperesTolerance)));
         }
 
         [Fact]

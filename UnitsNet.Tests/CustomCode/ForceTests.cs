@@ -1,5 +1,5 @@
-﻿// Copyright(c) 2007 Andreas Gullberg Larsen
-// https://github.com/anjdreas/UnitsNet
+﻿// Copyright (c) 2013 Andreas Gullberg Larsen (andreas.larsen84@gmail.com).
+// https://github.com/angularsen/UnitsNet
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,6 +30,7 @@ namespace UnitsNet.Tests.CustomCode
 
         protected override double KilogramsForceInOneNewton => 0.101972;
 
+        protected override double MeganewtonsInOneNewton => 1E-6;
         protected override double KilonewtonsInOneNewton => 1E-3;
 
         protected override double KiloPondsInOneNewton => 0.101972;
@@ -40,7 +41,7 @@ namespace UnitsNet.Tests.CustomCode
 
         protected override double PoundsForceInOneNewton => 0.22481;
 
-        protected override double TonnesForceInOneNewton => 1.02e-4;
+        protected override double TonnesForceInOneNewton => 1.019716212977928e-4;
 
         [Fact]
         public void ForceDividedByAreaEqualsPressure()
@@ -67,13 +68,13 @@ namespace UnitsNet.Tests.CustomCode
         public void ForceDividedByMassEqualsAcceleration()
         {
             Acceleration acceleration = Force.FromNewtons(27)/Mass.FromKilograms(9);
-            Assert.Equal(acceleration, Acceleration.FromMeterPerSecondSquared(3));
+            Assert.Equal(acceleration, Acceleration.FromMetersPerSecondSquared(3));
         }
     
         [Fact]
         public void ForceDividedByAccelerationEqualsMass()
         {
-          Mass acceleration = Force.FromNewtons(200)/Acceleration.FromMeterPerSecondSquared(50);
+          Mass acceleration = Force.FromNewtons(200)/Acceleration.FromMetersPerSecondSquared(50);
           Assert.Equal(acceleration, Mass.FromKilograms(4));
         }
 
@@ -93,7 +94,7 @@ namespace UnitsNet.Tests.CustomCode
         [Fact]
         public void MassByAccelerationEqualsForce()
         {
-            Force force = Force.FromMassByAcceleration(Mass.FromKilograms(85), Acceleration.FromMeterPerSecondSquared(-4));
+            Force force = Force.FromMassByAcceleration(Mass.FromKilograms(85), Acceleration.FromMetersPerSecondSquared(-4));
             Assert.Equal(force, Force.FromNewtons(-340));
         }
 

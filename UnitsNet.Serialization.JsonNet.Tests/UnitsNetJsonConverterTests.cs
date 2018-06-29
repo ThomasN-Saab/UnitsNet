@@ -1,5 +1,5 @@
-﻿// Copyright(c) 2007 Andreas Gullberg Larsen
-// https://github.com/anjdreas/UnitsNet
+﻿// Copyright (c) 2013 Andreas Gullberg Larsen (andreas.larsen84@gmail.com).
+// https://github.com/angularsen/UnitsNet
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -51,7 +51,7 @@ namespace UnitsNet.Serialization.JsonNet.Tests
             public void Information_CanSerializeVeryLargeValues()
             {
                 Information i = Information.FromExabytes(1E+9);
-                var expectedJson = "{\n  \"Unit\": \"InformationUnit.Bit\",\n  \"Value\": 8E+27\n}";
+                var expectedJson = "{\n  \"Unit\": \"InformationUnit.Exabyte\",\n  \"Value\": 1000000000.0\n}";
 
                 string json = SerializeObject(i);
 
@@ -59,12 +59,23 @@ namespace UnitsNet.Serialization.JsonNet.Tests
             }
 
             [Fact]
-            public void Mass_ExpectKilogramsUsedAsBaseValueAndUnit()
+            public void Mass_ExpectConstructedValueAndUnit()
             {
                 Mass mass = Mass.FromPounds(200);
-                var expectedJson = "{\n  \"Unit\": \"MassUnit.Kilogram\",\n  \"Value\": 90.718474\n}";
+                var expectedJson = "{\n  \"Unit\": \"MassUnit.Pound\",\n  \"Value\": 200.0\n}";
 
                 string json = SerializeObject(mass);
+
+                Assert.Equal(expectedJson, json);
+            }
+
+            [Fact]
+            public void Information_ExpectConstructedValueAndUnit()
+            {
+                Information quantity = Information.FromKilobytes(54);
+                var expectedJson = "{\n  \"Unit\": \"InformationUnit.Kilobyte\",\n  \"Value\": 54.0\n}";
+
+                string json = SerializeObject(quantity);
 
                 Assert.Equal(expectedJson, json);
             }
@@ -122,7 +133,7 @@ namespace UnitsNet.Serialization.JsonNet.Tests
             public void Ratio_ExpectDecimalFractionsUsedAsBaseValueAndUnit()
             {
                 Ratio ratio = Ratio.FromPartsPerThousand(250);
-                var expectedJson = "{\n  \"Unit\": \"RatioUnit.DecimalFraction\",\n  \"Value\": 0.25\n}";
+                var expectedJson = "{\n  \"Unit\": \"RatioUnit.PartPerThousand\",\n  \"Value\": 250.0\n}";
 
                 string json = SerializeObject(ratio);
 

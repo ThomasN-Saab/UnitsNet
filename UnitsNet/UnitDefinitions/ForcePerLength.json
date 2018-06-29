@@ -2,12 +2,17 @@
   "Name": "ForcePerLength",
   "BaseUnit": "NewtonPerMeter",
   "XmlDoc": "The magnitude of force per unit length.",
-  "Units": [{
+  "BaseDimensions": {
+    "M": 1,
+    "T": -2
+  },
+  "Units": [
+    {
       "SingularName": "NewtonPerMeter",
       "PluralName": "NewtonsPerMeter",
       "FromUnitToBaseFunc": "x",
       "FromBaseToUnitFunc": "x",
-      "Prefixes": [ "Nano", "Micro", "Milli", "Centi", "Deci", "Kilo" ],
+      "Prefixes": [ "Nano", "Micro", "Milli", "Centi", "Deci", "Kilo", "Mega" ],
       "Localization": [
         {
           "Culture": "en-US",

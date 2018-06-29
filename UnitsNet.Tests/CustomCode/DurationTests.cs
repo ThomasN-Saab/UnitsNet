@@ -1,5 +1,5 @@
-﻿// Copyright(c) 2007 Andreas Gullberg Larsen
-// https://github.com/anjdreas/UnitsNet
+﻿// Copyright (c) 2013 Andreas Gullberg Larsen (andreas.larsen84@gmail.com).
+// https://github.com/angularsen/UnitsNet
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,15 +36,19 @@ namespace UnitsNet.Tests.CustomCode
 
         protected override double MinutesInOneSecond => 0.0166667;
 
-        protected override double MonthsInOneSecond => 3.8027e-7;
+        protected override double MonthsInOneSecond => 3.858024691358024e-7;
+
+        protected override double Months30InOneSecond => 3.858024691358024e-7;
 
         protected override double NanosecondsInOneSecond => 1e+9;
 
         protected override double SecondsInOneSecond => 1;
 
-        protected override double WeeksInOneSecond => 1.6534e-6;
+        protected override double WeeksInOneSecond => 1.653439153439153e-6;
 
-        protected override double YearsInOneSecond => 3.1689e-8;
+        protected override double YearsInOneSecond => 3.170979198376458e-8;
+
+        protected override double Years365InOneSecond => 3.170979198376458e-8;
 
         [Fact]
         public static void ToTimeSpanShouldThrowExceptionOnValuesLargerThanTimeSpanMax()
@@ -206,6 +210,13 @@ namespace UnitsNet.Tests.CustomCode
             TimeSpan timeSpan = TimeSpan.FromHours(12);
             Duration duration = Duration.FromHours(11);
             Assert.True(timeSpan != duration, "timeSpan should not be equal to duration");
+        }
+
+        [Fact]
+        public void DurationTimesVolumeFlowEqualsVolume()
+        {
+            Volume volume = Duration.FromSeconds(20) * VolumeFlow.FromCubicMetersPerSecond(2);
+            Assert.Equal(Volume.FromCubicMeters(40), volume);
         }
     }
 }

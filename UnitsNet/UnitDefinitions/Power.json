@@ -1,15 +1,20 @@
-{
+﻿{
   "Name": "Power",
   "BaseUnit": "Watt",
   "BaseType": "decimal",
   "XmlDoc": "In physics, power is the rate of doing work. It is equivalent to an amount of energy consumed per unit time.",
+  "BaseDimensions": {
+    "L": 2,
+    "M": 1,
+    "T": -3
+  },
   "Units": [
     {
       "SingularName": "Watt",
       "PluralName": "Watts",
       "FromUnitToBaseFunc": "x",
       "FromBaseToUnitFunc": "x",
-      "Prefixes": [ "Femto", "Pico", "Nano", "Micro", "Milli", "Kilo", "Mega", "Giga", "Tera", "Peta" ],
+      "Prefixes": [ "Femto", "Pico", "Nano", "Micro", "Milli", "Deci", "Deca", "Kilo", "Mega", "Giga", "Tera", "Peta" ],
       "Localization": [
         {
           "Culture": "en-US",
@@ -74,6 +79,19 @@
         {
           "Culture": "en-US",
           "Abbreviations": [ "hp(H)" ]
+        }
+      ]
+    },
+    {
+      "SingularName": "BritishThermalUnitPerHour",
+      "PluralName": "BritishThermalUnitsPerHour",
+      "FromUnitToBaseFunc": "x*0.293071m",
+      "FromBaseToUnitFunc": "x/0.293071m",
+      "Prefixes": [ "Kilo" ],
+      "Localization": [
+        {
+          "Culture": "en-US",
+          "Abbreviations": [ "Btu/hr" ]
         }
       ]
     }

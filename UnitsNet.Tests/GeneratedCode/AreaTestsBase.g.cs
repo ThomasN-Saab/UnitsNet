@@ -6,17 +6,17 @@
 //     The build server regenerates the code before each build and a pre-build
 //     step will regenerate the code on each local build.
 //
-//     See https://github.com/anjdreas/UnitsNet/wiki/Adding-a-New-Unit for how to add or edit units.
+//     See https://github.com/angularsen/UnitsNet/wiki/Adding-a-New-Unit for how to add or edit units.
 //
-//     Add CustomCode\UnitClasses\MyUnit.extra.cs files to add code to generated unit classes.
-//     Add Extensions\MyUnitExtensions.cs to decorate unit classes with new behavior.
-//     Add UnitDefinitions\MyUnit.json and run GeneratUnits.bat to generate new units or unit classes.
+//     Add CustomCode\Quantities\MyQuantity.extra.cs files to add code to generated quantities.
+//     Add Extensions\MyQuantityExtensions.cs to decorate quantities with new behavior.
+//     Add UnitDefinitions\MyQuantity.json and run GeneratUnits.bat to generate new units or quantities.
 //
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Copyright (c) 2007 Andreas Gullberg Larsen (anjdreas@gmail.com).
-// https://github.com/anjdreas/UnitsNet
+// Copyright (c) 2013 Andreas Gullberg Larsen (andreas.larsen84@gmail.com).
+// https://github.com/angularsen/UnitsNet
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -64,6 +64,7 @@ namespace UnitsNet.Tests
         protected abstract double SquareMilesInOneSquareMeter { get; }
         protected abstract double SquareMillimetersInOneSquareMeter { get; }
         protected abstract double SquareYardsInOneSquareMeter { get; }
+        protected abstract double UsSurveySquareFeetInOneSquareMeter { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
         protected virtual double AcresTolerance { get { return 1e-5; } }
@@ -78,6 +79,7 @@ namespace UnitsNet.Tests
         protected virtual double SquareMilesTolerance { get { return 1e-5; } }
         protected virtual double SquareMillimetersTolerance { get { return 1e-5; } }
         protected virtual double SquareYardsTolerance { get { return 1e-5; } }
+        protected virtual double UsSurveySquareFeetTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
@@ -96,6 +98,7 @@ namespace UnitsNet.Tests
             AssertEx.EqualTolerance(SquareMilesInOneSquareMeter, squaremeter.SquareMiles, SquareMilesTolerance);
             AssertEx.EqualTolerance(SquareMillimetersInOneSquareMeter, squaremeter.SquareMillimeters, SquareMillimetersTolerance);
             AssertEx.EqualTolerance(SquareYardsInOneSquareMeter, squaremeter.SquareYards, SquareYardsTolerance);
+            AssertEx.EqualTolerance(UsSurveySquareFeetInOneSquareMeter, squaremeter.UsSurveySquareFeet, UsSurveySquareFeetTolerance);
         }
 
         [Fact]
@@ -113,6 +116,7 @@ namespace UnitsNet.Tests
             AssertEx.EqualTolerance(1, Area.From(1, AreaUnit.SquareMile).SquareMiles, SquareMilesTolerance);
             AssertEx.EqualTolerance(1, Area.From(1, AreaUnit.SquareMillimeter).SquareMillimeters, SquareMillimetersTolerance);
             AssertEx.EqualTolerance(1, Area.From(1, AreaUnit.SquareYard).SquareYards, SquareYardsTolerance);
+            AssertEx.EqualTolerance(1, Area.From(1, AreaUnit.UsSurveySquareFoot).UsSurveySquareFeet, UsSurveySquareFeetTolerance);
         }
 
         [Fact]
@@ -131,6 +135,7 @@ namespace UnitsNet.Tests
             AssertEx.EqualTolerance(SquareMilesInOneSquareMeter, squaremeter.As(AreaUnit.SquareMile), SquareMilesTolerance);
             AssertEx.EqualTolerance(SquareMillimetersInOneSquareMeter, squaremeter.As(AreaUnit.SquareMillimeter), SquareMillimetersTolerance);
             AssertEx.EqualTolerance(SquareYardsInOneSquareMeter, squaremeter.As(AreaUnit.SquareYard), SquareYardsTolerance);
+            AssertEx.EqualTolerance(UsSurveySquareFeetInOneSquareMeter, squaremeter.As(AreaUnit.UsSurveySquareFoot), UsSurveySquareFeetTolerance);
         }
 
         [Fact]
@@ -149,6 +154,7 @@ namespace UnitsNet.Tests
             AssertEx.EqualTolerance(1, Area.FromSquareMiles(squaremeter.SquareMiles).SquareMeters, SquareMilesTolerance);
             AssertEx.EqualTolerance(1, Area.FromSquareMillimeters(squaremeter.SquareMillimeters).SquareMeters, SquareMillimetersTolerance);
             AssertEx.EqualTolerance(1, Area.FromSquareYards(squaremeter.SquareYards).SquareMeters, SquareYardsTolerance);
+            AssertEx.EqualTolerance(1, Area.FromUsSurveySquareFeet(squaremeter.UsSurveySquareFeet).SquareMeters, UsSurveySquareFeetTolerance);
         }
 
         [Fact]
@@ -224,8 +230,8 @@ namespace UnitsNet.Tests
         public void EqualsIsImplemented()
         {
             Area v = Area.FromSquareMeters(1);
-            Assert.True(v.Equals(Area.FromSquareMeters(1)));
-            Assert.False(v.Equals(Area.Zero));
+            Assert.True(v.Equals(Area.FromSquareMeters(1), Area.FromSquareMeters(SquareMetersTolerance)));
+            Assert.False(v.Equals(Area.Zero, Area.FromSquareMeters(SquareMetersTolerance)));
         }
 
         [Fact]

@@ -6,17 +6,17 @@
 //     The build server regenerates the code before each build and a pre-build
 //     step will regenerate the code on each local build.
 //
-//     See https://github.com/anjdreas/UnitsNet/wiki/Adding-a-New-Unit for how to add or edit units.
+//     See https://github.com/angularsen/UnitsNet/wiki/Adding-a-New-Unit for how to add or edit units.
 //
-//     Add CustomCode\UnitClasses\MyUnit.extra.cs files to add code to generated unit classes.
-//     Add Extensions\MyUnitExtensions.cs to decorate unit classes with new behavior.
-//     Add UnitDefinitions\MyUnit.json and run GeneratUnits.bat to generate new units or unit classes.
+//     Add CustomCode\Quantities\MyQuantity.extra.cs files to add code to generated quantities.
+//     Add Extensions\MyQuantityExtensions.cs to decorate quantities with new behavior.
+//     Add UnitDefinitions\MyQuantity.json and run GeneratUnits.bat to generate new units or quantities.
 //
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Copyright (c) 2007 Andreas Gullberg Larsen (anjdreas@gmail.com).
-// https://github.com/anjdreas/UnitsNet
+// Copyright (c) 2013 Andreas Gullberg Larsen (andreas.larsen84@gmail.com).
+// https://github.com/angularsen/UnitsNet
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -40,62 +40,104 @@
 
 namespace UnitsNet
 {
-	/// <summary>
-	///     Lists all generated quantities with the same name as the quantity struct type,
-	///     such as Length, Mass, Force etc.
-	///     This is useful for populating options in the UI, such as creating a generic conversion
-	///     tool with inputValue, quantityName, fromUnit and toUnit selectors.
-	/// </summary>
+    /// <summary>
+    ///     Lists all generated quantities with the same name as the quantity struct type,
+    ///     such as Length, Mass, Force etc.
+    ///     This is useful for populating options in the UI, such as creating a generic conversion
+    ///     tool with inputValue, quantityName, fromUnit and toUnit selectors.
+    /// </summary>
     public enum QuantityType
     {
         Undefined = 0,
         Acceleration,
+        AmountOfSubstance,
         AmplitudeRatio,
         Angle,
+        ApparentEnergy,
         ApparentPower,
         Area,
+        AreaDensity,
         AreaMomentOfInertia,
+        BitRate,
         BrakeSpecificFuelConsumption,
+        Capacitance,
         Density,
         Duration,
         DynamicViscosity,
         ElectricAdmittance,
+        ElectricCharge,
+        ElectricChargeDensity,
+        ElectricConductance,
+        ElectricConductivity,
         ElectricCurrent,
+        ElectricCurrentDensity,
+        ElectricCurrentGradient,
+        ElectricField,
+        ElectricInductance,
         ElectricPotential,
         ElectricPotentialAc,
         ElectricPotentialDc,
         ElectricResistance,
+        ElectricResistivity,
         Energy,
+        Entropy,
         Flow,
         Force,
         ForceChangeRate,
         ForcePerLength,
         Frequency,
+        HeatFlux,
+        HeatTransferCoefficient,
+        Illuminance,
         Information,
+        Irradiance,
+        Irradiation,
         KinematicViscosity,
+        LapseRate,
         Length,
         Level,
+        LinearDensity,
+        LuminousFlux,
+        LuminousIntensity,
+        MagneticField,
+        MagneticFlux,
+        Magnetization,
         Mass,
         MassFlow,
+        MassFlux,
         MassMomentOfInertia,
+        MolarEnergy,
+        MolarEntropy,
         Molarity,
+        MolarMass,
+        Permeability,
+        Permittivity,
         Power,
+        PowerDensity,
         PowerRatio,
         Pressure,
         PressureChangeRate,
         Ratio,
+        ReactiveEnergy,
         ReactivePower,
         RotationalAcceleration,
         RotationalSpeed,
+        RotationalStiffness,
+        RotationalStiffnessPerLength,
+        SolidAngle,
         SpecificEnergy,
+        SpecificEntropy,
+        SpecificVolume,
         SpecificWeight,
         Speed,
         Temperature,
         TemperatureChangeRate,
         TemperatureDelta,
+        ThermalConductivity,
         ThermalResistance,
         Torque,
         VitaminA,
         Volume,
+        VolumeFlow,
     }
 }

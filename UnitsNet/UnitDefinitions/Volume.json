@@ -2,6 +2,9 @@
   "Name": "Volume",
   "BaseUnit": "CubicMeter",
   "XmlDoc": "Volume is the quantity of three-dimensional space enclosed by some closed boundary, for example, the space that a substance (solid, liquid, gas, or plasma) or shape occupies or contains.[1] Volume is often quantified numerically using the SI derived unit, the cubic metre. The volume of a container is generally understood to be the capacity of the container, i. e. the amount of fluid (gas or liquid) that the container could hold, rather than the amount of space the container itself displaces.",
+  "BaseDimensions": {
+    "L": 3
+  },
   "Units": [
     {
       "SingularName": "Liter",
@@ -26,6 +29,7 @@
       "PluralName": "CubicMeters",
       "FromUnitToBaseFunc": "x",
       "FromBaseToUnitFunc": "x",
+      "Prefixes": [ "Hecto", "Kilo" ],
       "Localization": [
         {
           "Culture": "en-US",
@@ -120,8 +124,8 @@
     {
       "SingularName": "CubicMile",
       "PluralName": "CubicMiles",
-      "FromUnitToBaseFunc": "x*4.16818183*1e9",
-      "FromBaseToUnitFunc": "x/(4.16818183*1e9)",
+      "FromUnitToBaseFunc": "x*4.16818182544058e9",
+      "FromBaseToUnitFunc": "x/4.16818182544058e9",
       "Localization": [
         {
           "Culture": "en-US",
@@ -154,6 +158,7 @@
       "PluralName": "CubicFeet",
       "FromUnitToBaseFunc": "x*0.0283168",
       "FromBaseToUnitFunc": "x/0.0283168",
+      "Prefixes": [ "Hecto", "Kilo", "Mega" ],
       "Localization": [
         {
           "Culture": "en-US",
@@ -186,6 +191,7 @@
       "PluralName": "ImperialGallons",
       "FromUnitToBaseFunc": "x*0.00454609000000181429905810072407",
       "FromBaseToUnitFunc": "x/0.00454609000000181429905810072407",
+      "Prefixes": [ "Kilo", "Mega" ],
       "Localization": [
         {
           "Culture": "en-US",
@@ -218,6 +224,7 @@
       "PluralName": "UsGallons",
       "FromUnitToBaseFunc": "x*0.00378541",
       "FromBaseToUnitFunc": "x/0.00378541",
+      "Prefixes": [ "Kilo", "Mega" ],
       "Localization": [
         {
           "Culture": "en-US",
@@ -295,15 +302,15 @@
       "Localization": [
         {
           "Culture": "en-US",
-          "Abbreviations": [ ]
+          "Abbreviations": []
         },
         {
           "Culture": "ru-RU",
-          "Abbreviations": [ ]
+          "Abbreviations": []
         },
         {
           "Culture": "nb-NO",
-          "Abbreviations": [ ]
+          "Abbreviations": []
         }
       ]
     },
@@ -315,15 +322,15 @@
       "Localization": [
         {
           "Culture": "en-US",
-          "Abbreviations": [ ]
+          "Abbreviations": []
         },
         {
           "Culture": "ru-RU",
-          "Abbreviations": [ ]
+          "Abbreviations": []
         },
         {
           "Culture": "nb-NO",
-          "Abbreviations": [ ]
+          "Abbreviations": []
         }
       ]
     },
@@ -335,15 +342,15 @@
       "Localization": [
         {
           "Culture": "en-US",
-          "Abbreviations": [ ]
+          "Abbreviations": []
         },
         {
           "Culture": "ru-RU",
-          "Abbreviations": [ ]
+          "Abbreviations": []
         },
         {
           "Culture": "nb-NO",
-          "Abbreviations": [ ]
+          "Abbreviations": []
         }
       ]
     },
@@ -359,11 +366,11 @@
         },
         {
           "Culture": "ru-RU",
-          "Abbreviations": [ ]
+          "Abbreviations": []
         },
         {
           "Culture": "nb-NO",
-          "Abbreviations": [ ]
+          "Abbreviations": []
         }
       ]
     },
@@ -375,15 +382,15 @@
       "Localization": [
         {
           "Culture": "en-US",
-          "Abbreviations": [ ]
+          "Abbreviations": []
         },
         {
           "Culture": "ru-RU",
-          "Abbreviations": [ ]
+          "Abbreviations": []
         },
         {
           "Culture": "nb-NO",
-          "Abbreviations": [ ]
+          "Abbreviations": []
         }
       ]
     },
@@ -395,7 +402,7 @@
       "Localization": [
         {
           "Culture": "en-US",
-          "Abbreviations": [ ]
+          "Abbreviations": []
         }
       ]
     },
@@ -407,7 +414,7 @@
       "Localization": [
         {
           "Culture": "en-US",
-          "Abbreviations": [ ]
+          "Abbreviations": []
         }
       ]
     },
@@ -419,7 +426,7 @@
       "Localization": [
         {
           "Culture": "en-US",
-          "Abbreviations": [ ]
+          "Abbreviations": []
         }
       ]
     },
@@ -432,6 +439,54 @@
         {
           "Culture": "en-US",
           "Abbreviations": [ "bbl" ]
+        }
+      ]
+    },
+    {
+      "SingularName": "UsBeerBarrel",
+      "PluralName": "UsBeerBarrels",
+      "FromUnitToBaseFunc": "x*0.1173477658",
+      "FromBaseToUnitFunc": "x/0.1173477658",
+      "Localization": [
+        {
+          "Culture": "en-US",
+          "Abbreviations": [ "bl (U.S.)" ]
+        }
+      ]
+    },
+    {
+      "SingularName": "ImperialBeerBarrel",
+      "PluralName": "ImperialBeerBarrels",
+      "FromUnitToBaseFunc": "x*0.16365924",
+      "FromBaseToUnitFunc": "x/0.16365924",
+      "Localization": [
+        {
+          "Culture": "en-US",
+          "Abbreviations": [ "bl (imp.)" ]
+        }
+      ]
+    },
+    {
+      "SingularName": "UsQuart",
+      "PluralName": "UsQuarts",
+      "FromUnitToBaseFunc": "x*9.46352946e-4",
+      "FromBaseToUnitFunc": "x/9.46352946e-4",
+      "Localization": [
+        {
+          "Culture": "en-US",
+          "Abbreviations": [ "qt (U.S.)" ]
+        }
+      ]
+    },
+    {
+      "SingularName": "UsPint",
+      "PluralName": "UsPints",
+      "FromUnitToBaseFunc": "x*4.73176473e-4",
+      "FromBaseToUnitFunc": "x/4.73176473e-4",
+      "Localization": [
+        {
+          "Culture": "en-US",
+          "Abbreviations": [ "pt (U.S.)" ]
         }
       ]
     }

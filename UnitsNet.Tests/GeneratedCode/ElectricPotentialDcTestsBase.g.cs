@@ -6,17 +6,17 @@
 //     The build server regenerates the code before each build and a pre-build
 //     step will regenerate the code on each local build.
 //
-//     See https://github.com/anjdreas/UnitsNet/wiki/Adding-a-New-Unit for how to add or edit units.
+//     See https://github.com/angularsen/UnitsNet/wiki/Adding-a-New-Unit for how to add or edit units.
 //
-//     Add CustomCode\UnitClasses\MyUnit.extra.cs files to add code to generated unit classes.
-//     Add Extensions\MyUnitExtensions.cs to decorate unit classes with new behavior.
-//     Add UnitDefinitions\MyUnit.json and run GeneratUnits.bat to generate new units or unit classes.
+//     Add CustomCode\Quantities\MyQuantity.extra.cs files to add code to generated quantities.
+//     Add Extensions\MyQuantityExtensions.cs to decorate quantities with new behavior.
+//     Add UnitDefinitions\MyQuantity.json and run GeneratUnits.bat to generate new units or quantities.
 //
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Copyright (c) 2007 Andreas Gullberg Larsen (anjdreas@gmail.com).
-// https://github.com/anjdreas/UnitsNet
+// Copyright (c) 2013 Andreas Gullberg Larsen (andreas.larsen84@gmail.com).
+// https://github.com/angularsen/UnitsNet
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -182,8 +182,8 @@ namespace UnitsNet.Tests
         public void EqualsIsImplemented()
         {
             ElectricPotentialDc v = ElectricPotentialDc.FromVoltsDc(1);
-            Assert.True(v.Equals(ElectricPotentialDc.FromVoltsDc(1)));
-            Assert.False(v.Equals(ElectricPotentialDc.Zero));
+            Assert.True(v.Equals(ElectricPotentialDc.FromVoltsDc(1), ElectricPotentialDc.FromVoltsDc(VoltsDcTolerance)));
+            Assert.False(v.Equals(ElectricPotentialDc.Zero, ElectricPotentialDc.FromVoltsDc(VoltsDcTolerance)));
         }
 
         [Fact]

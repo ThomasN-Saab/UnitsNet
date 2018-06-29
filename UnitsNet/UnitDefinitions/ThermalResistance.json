@@ -1,7 +1,12 @@
-{
+ï»¿{
   "Name": "ThermalResistance",
   "BaseUnit": "SquareMeterKelvinPerKilowatt",
   "XmlDoc": "Heat Transfer Coefficient or Thermal conductivity - indicates a materials ability to conduct heat.",
+  "BaseDimensions": {
+    "M": -1,
+    "T": 3,
+    "Î˜": 1
+  },
   "Units": [
     {
       "SingularName": "SquareMeterKelvinPerKilowatt",
@@ -11,7 +16,7 @@
       "Localization": [
         {
           "Culture": "en-US",
-          "Abbreviations": [ "m²K/kW" ]
+          "Abbreviations": [ "mÂ²K/kW" ]
         }
       ]
     },
@@ -23,7 +28,7 @@
       "Localization": [
         {
           "Culture": "en-US",
-          "Abbreviations": [ "m²°C/W" ]
+          "Abbreviations": [ "mÂ²Â°C/W" ]
         }
       ]
     },
@@ -35,7 +40,7 @@
       "Localization": [
         {
           "Culture": "en-US",
-          "Abbreviations": [ "cm²K/W" ]
+          "Abbreviations": [ "cmÂ²K/W" ]
         }
       ]
     },
@@ -47,7 +52,7 @@
       "Localization": [
         {
           "Culture": "en-US",
-          "Abbreviations": [ "cm²Hr°C/kcal" ]
+          "Abbreviations": [ "cmÂ²HrÂ°C/kcal" ]
         }
       ]
     },
@@ -59,7 +64,7 @@
       "Localization": [
         {
           "Culture": "en-US",
-          "Abbreviations": [ "Hrft²°F/Btu" ]
+          "Abbreviations": [ "HrftÂ²Â°F/Btu" ]
         }
       ]
     }
